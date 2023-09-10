@@ -1,6 +1,6 @@
 import express from 'express';
 import http from 'http';
-import { Server } from 'socket.io';
+import { Server, Socket } from 'socket.io';
 
 const PORT = process.env.PORT || 3000;
 const app = express();
@@ -11,15 +11,21 @@ const io = new Server(server, {
   },
 });
 
-io.on('connection', (socket) => {
-  console.log('Client connected');
+io.on('connection', (socket: Socket) => {
+  console.log('User connected ID:', socket.id);
 
-  socket.on('disconnect', () => {
-    console.log('Client disconnected');
+  socket.on('join', (data) => {
+    console.log(`User with ID: ${socket.id} joined room: ${data.room}`);
+    socket.join(data.room);
+    io.to(data.room).emit('user joined', data.email);
   });
 
-  socket.on('chat message', (message) => {
-    io.emit('chat message', message);
+  socket.on('chat message', (data) => {
+    socket.to(data.room).emit('receive_message', data);
+  });
+
+  socket.on('disconnect', () => {
+    console.log('User Disconnected', socket.id);
   });
 });
 
