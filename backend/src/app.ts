@@ -1,12 +1,28 @@
-import express, { Request, Response } from 'express';
+import express from 'express';
+import http from 'http';
+import { Server } from 'socket.io';
 
-const app = express();
 const PORT = process.env.PORT || 3000;
-
-app.get('/', (req: Request, res: Response) => {
-  res.send('Hello, World!');
+const app = express();
+const server = http.createServer(app);
+const io = new Server(server, {
+  cors: {
+    origin: '*',
+  },
 });
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+io.on('connection', (socket) => {
+  console.log('Client connected');
+
+  socket.on('disconnect', () => {
+    console.log('Client disconnected');
+  });
+
+  socket.on('chat message', (message) => {
+    io.emit('chat message', message);
+  });
+});
+
+server.listen(PORT, () => {
+  console.log(`Service listen on ${PORT}`);
 });
