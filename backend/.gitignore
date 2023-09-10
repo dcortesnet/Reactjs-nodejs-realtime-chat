@@ -1,0 +1,22 @@
+# Directorios generados por Node.js
+node_modules/
+
+# Archivos generados por TypeScript
+dist/
+*.js
+*.js.map
+*.d.ts
+
+# Archivos de configuración locales
+.env
+
+# Logs y archivos temporales
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Dependiendo de tu IDE/Editor, puedes agregar configuraciones específicas aquí
+
+# Dependiendo de tu sistema operativo, puedes agregar configuraciones específicas aquí
+.DS_Store
+Thumbs.db
