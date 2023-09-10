@@ -1,12 +1,10 @@
-import { EntryPage } from './pages/EntryPage';
+import { ChatRoomPage } from './pages/ChatRoomPage';
 
 function App() {
   return (
-    <>
-      <div className="h-screen">
-        <EntryPage />
-      </div>
-    </>
+    <div className="h-screen">
+      <ChatRoomPage />
+    </div>
   );
 }
 
