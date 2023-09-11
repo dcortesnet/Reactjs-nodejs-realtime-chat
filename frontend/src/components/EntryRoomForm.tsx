@@ -1,11 +1,23 @@
 import { Button, Label, TextInput } from 'flowbite-react';
-import { useState } from 'react';
+import { FormEvent, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useSocket } from '../contexts/SocketContext';
 
 export function EntryRoomForm() {
+  const socket = useSocket();
   const [email, setEmail] = useState('');
   const [room, setRoom] = useState('room1');
+  const navigate = useNavigate();
 
-  const handleSubmit = () => {};
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    socket?.emit('join', {
+      room: room,
+      email: email,
+    });
+    navigate('room');
+    return;
+  };
 
   return (
     <form
@@ -37,9 +49,7 @@ export function EntryRoomForm() {
           value={room}
           onChange={(e) => setRoom(e.target.value)}
         >
-          <option value="room1" selected>
-            Room 1
-          </option>
+          <option value="room1">Room 1</option>
           <option value="room2">Room 2</option>
           <option value="room3">Room 3</option>
         </select>

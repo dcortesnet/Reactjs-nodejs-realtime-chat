@@ -3,7 +3,7 @@ import { Title } from '../components/Title';
 
 export function EntryRoomPage() {
   return (
-    <div className="h-full flex flex-col justify-center items-center p-5">
+    <div className="h-screen h-full flex flex-col justify-center items-center p-5">
       <Title title="Entry Room Page" />
       <EntryRoomForm />
     </div>

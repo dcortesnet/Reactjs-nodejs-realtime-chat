@@ -2,6 +2,15 @@
 
 Simple application with React, Nodejs and, SocketIO. Using React with Typescript and Tailwind CSS.
 
+## Packages
+
+- SocketIO: https://www.npmjs.com/package/socket.io
+- SocketIO Client: https://www.npmjs.com/package/socket.io-client
+- React Router: https://www.npmjs.com/package/react-router
+- Tailwind CSS: https://tailwindcss.com/
+- Flowbite: https://flowbite.com/docs/getting-started/react/
+- Flowbite UI React: https://www.flowbite-react.com/
+
 ## Team
 
 Developed by Diego Cortés
