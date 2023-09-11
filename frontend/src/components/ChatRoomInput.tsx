@@ -3,6 +3,12 @@ import { useSocket } from '../hooks/useSocket';
 import { useState } from 'react';
 import { useUser } from '../hooks/useUser';
 
+interface Message {
+  room: string;
+  author: string;
+  message: string;
+}
+
 export function ChatRoomInput() {
   const socket = useSocket();
   const user = useUser();
@@ -10,7 +16,7 @@ export function ChatRoomInput() {
 
   const sendMessage = async () => {
     if (message !== '' && socket) {
-      const data = {
+      const data: Message = {
         room: user.userData.room,
         author: user.userData.email,
         message: message,
