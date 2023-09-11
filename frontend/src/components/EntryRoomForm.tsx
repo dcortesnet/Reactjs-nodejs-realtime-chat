@@ -2,9 +2,11 @@ import { Button, Label, TextInput } from 'flowbite-react';
 import { FormEvent, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSocket } from '../hooks/useSocket';
+import { useUser } from '../hooks/useUser';
 
 export function EntryRoomForm() {
   const socket = useSocket();
+  const user = useUser();
   const [email, setEmail] = useState('');
   const [room, setRoom] = useState('room1');
   const navigate = useNavigate();
@@ -15,6 +17,8 @@ export function EntryRoomForm() {
       room: room,
       email: email,
     });
+    user.setEmail(email);
+    user.setRoom(room);
     navigate('room');
     return;
   };
