@@ -1,3 +1,5 @@
+import { useUser } from '../hooks/useUser';
+
 interface Props {
   room: string;
   author: string;
@@ -5,14 +7,17 @@ interface Props {
 }
 
 export function ChatRoomMessage(props: Props) {
+  const user = useUser();
+
   return (
-    <div className="w-1/2 flex mb-2 justify-start bg-sky-300 rounded ">
+    <div
+      className={`flex mb-2 ${
+        user.userData.email === props.author ? 'bg-sky-300' : ' bg-orange-400'
+      }  rounded `}
+    >
       <div className="py-2 px-3">
-        <p className="text-sm text-orange">CC: {props.author}</p>
-        <p className="text-sm mt-1">{props.message}</p>
-        <p className="text-right text-xs text-grey-dark mt-1">
-          {new Date().toISOString()}
-        </p>
+        <p className="text-sm text-orange">Author: {props.author}</p>
+        <p className="text-sm mt-1">Message: {props.message}</p>
       </div>
     </div>
   );
