@@ -1,7 +1,7 @@
 import { Button, Label, TextInput } from 'flowbite-react';
 import { FormEvent, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useSocket } from '../contexts/SocketContext';
+import { useSocket } from '../hooks/useSocket';
 
 export function EntryRoomForm() {
   const socket = useSocket();

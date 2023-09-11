@@ -1,17 +1,7 @@
-import {
-  ReactNode,
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-} from 'react';
+import { ReactNode, createContext, useEffect, useState } from 'react';
 import { Socket, io } from 'socket.io-client';
 
-const SocketContext = createContext<Socket | null>(null);
-
-export function useSocket() {
-  return useContext(SocketContext);
-}
+export const SocketContext = createContext<Socket | null>(null);
 
 interface Props {
   children: ReactNode;
