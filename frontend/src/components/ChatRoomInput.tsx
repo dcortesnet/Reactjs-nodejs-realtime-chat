@@ -1,5 +1,5 @@
 import { Button } from 'flowbite-react';
-import { useSocket } from '../hooks/useSocket';
+import { socket } from '../websocket';
 import { useState } from 'react';
 import { useUser } from '../hooks/useUser';
 
@@ -10,7 +10,6 @@ interface Message {
 }
 
 export function ChatRoomInput() {
-  const socket = useSocket();
   const user = useUser();
   const [message, setMessage] = useState('');
 

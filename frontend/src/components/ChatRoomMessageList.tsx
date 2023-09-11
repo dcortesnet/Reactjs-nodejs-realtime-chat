@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { ChatRoomMessage } from './ChatRoomMessage';
-import { useSocket } from '../hooks/useSocket';
+import { socket } from '../websocket';
 
 interface Message {
   room: string;
@@ -9,7 +9,6 @@ interface Message {
 }
 
 export function ChatRoomMessageList() {
-  const socket = useSocket();
   const [messageList, setMessageList] = useState<Message[]>([]);
 
   useEffect(() => {

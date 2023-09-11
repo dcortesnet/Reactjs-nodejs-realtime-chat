@@ -1,11 +1,10 @@
 import { Button, Label, TextInput } from 'flowbite-react';
 import { FormEvent, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useSocket } from '../hooks/useSocket';
+import { socket } from '../websocket';
 import { useUser } from '../hooks/useUser';
 
 export function EntryRoomForm() {
-  const socket = useSocket();
   const user = useUser();
   const [email, setEmail] = useState('');
   const [room, setRoom] = useState('room1');
