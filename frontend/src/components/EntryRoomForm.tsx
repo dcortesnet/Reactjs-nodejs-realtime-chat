@@ -17,8 +17,10 @@ export function EntryRoomForm() {
       room: room,
       email: email,
     });
-    user.setEmail(email);
-    user.setRoom(room);
+    user.setUserData({
+      email: email,
+      room: room,
+    });
     navigate('room');
     return;
   };

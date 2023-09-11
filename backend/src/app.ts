@@ -20,8 +20,8 @@ io.on('connection', (socket: Socket) => {
     io.to(data.room).emit('user joined', data.email);
   });
 
-  socket.on('chat message', (data) => {
-    socket.to(data.room).emit('receive_message', data);
+  socket.on('new_message', (data) => {
+    io.to(data.room).emit('receive_message', data);
   });
 
   socket.on('disconnect', () => {

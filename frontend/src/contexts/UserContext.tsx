@@ -7,17 +7,24 @@ import {
 } from 'react';
 
 interface UserContextData {
-  email: string;
-  setEmail: Dispatch<SetStateAction<string>>;
-  room: string;
-  setRoom: Dispatch<SetStateAction<string>>;
+  userData: {
+    email: string;
+    room: string;
+  };
+  setUserData: Dispatch<
+    SetStateAction<{
+      email: string;
+      room: string;
+    }>
+  >;
 }
 
 export const UserContext = createContext<UserContextData>({
-  email: '',
-  setEmail: () => {},
-  room: '',
-  setRoom: () => {},
+  userData: {
+    email: '',
+    room: '',
+  },
+  setUserData: () => {},
 });
 
 interface Props {
@@ -25,11 +32,13 @@ interface Props {
 }
 
 export function UserProvider({ children }: Props) {
-  const [email, setEmail] = useState('');
-  const [room, setRoom] = useState('');
+  const [userData, setUserData] = useState<{ email: string; room: string }>({
+    email: '',
+    room: '',
+  });
 
   return (
-    <UserContext.Provider value={{ email, setEmail, room, setRoom }}>
+    <UserContext.Provider value={{ userData, setUserData }}>
       {children}
     </UserContext.Provider>
   );

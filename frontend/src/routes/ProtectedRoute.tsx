@@ -7,10 +7,10 @@ interface ProtectedRouteProps {
 
 export function ProtectedRoute({
   canActivate,
-  redirectPath = '/',
+  redirectPath = '',
 }: ProtectedRouteProps) {
   if (!canActivate) {
     return <Navigate to={redirectPath} replace />;
   }
-  return <Outlet />; // Charge all wrapper
+  return <Outlet />;
 }
