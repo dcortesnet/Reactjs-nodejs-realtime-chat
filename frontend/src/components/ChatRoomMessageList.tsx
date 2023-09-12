@@ -12,12 +12,10 @@ export function ChatRoomMessageList() {
   const [messageList, setMessageList] = useState<Message[]>([]);
 
   useEffect(() => {
-    if (socket) {
-      socket.on('receive_message', (data) => {
-        setMessageList((prevList) => [...prevList, data]);
-      });
-    }
-  }, [socket]);
+    socket.on('receive_message', (data) => {
+      setMessageList((prevList) => [...prevList, data]);
+    });
+  }, []);
 
   return (
     <div className="max-w-md w-full flex flex-col gap-3">

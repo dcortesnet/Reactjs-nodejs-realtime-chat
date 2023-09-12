@@ -10,6 +10,7 @@ Simple application with React, Nodejs and, SocketIO. Using React with Typescript
 - Tailwind CSS: https://tailwindcss.com/
 - Flowbite: https://flowbite.com/docs/getting-started/react/
 - Flowbite UI React: https://www.flowbite-react.com/
+- ReduxTolkit: https://redux-toolkit.js.org/
 
 ## Team
 

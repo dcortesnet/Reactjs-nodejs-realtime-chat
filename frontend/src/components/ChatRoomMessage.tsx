@@ -1,4 +1,5 @@
-import { useUser } from '../hooks/useUser';
+import { useSelector } from 'react-redux';
+import { RootState } from '../redux/store';
 
 interface Props {
   room: string;
@@ -7,12 +8,12 @@ interface Props {
 }
 
 export function ChatRoomMessage(props: Props) {
-  const user = useUser();
+  const user = useSelector((state: RootState) => state.user);
 
   return (
     <div
       className={`flex mb-2 ${
-        user.userData.email === props.author ? 'bg-sky-300' : ' bg-orange-400'
+        user.email === props.author ? 'bg-sky-300' : ' bg-orange-400'
       }  rounded `}
     >
       <div className="py-2 px-3">

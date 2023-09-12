@@ -1,7 +1,8 @@
 import { Button } from 'flowbite-react';
 import { socket } from '../websocket';
 import { useState } from 'react';
-import { useUser } from '../hooks/useUser';
+import { useSelector } from 'react-redux';
+import { RootState } from '../redux/store';
 
 interface Message {
   room: string;
@@ -10,14 +11,14 @@ interface Message {
 }
 
 export function ChatRoomInput() {
-  const user = useUser();
+  const user = useSelector((state: RootState) => state.user);
   const [message, setMessage] = useState('');
 
   const sendMessage = async () => {
     if (message !== '' && socket) {
       const data: Message = {
-        room: user.userData.room,
-        author: user.userData.email,
+        room: user.room,
+        author: user.email,
         message: message,
       };
       await socket.emit('new_message', data);

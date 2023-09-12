@@ -2,13 +2,14 @@ import { Button, Label, TextInput } from 'flowbite-react';
 import { FormEvent, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { socket } from '../websocket';
-import { useUser } from '../hooks/useUser';
+import { useDispatch } from 'react-redux';
+import { updateUser } from '../redux/userSlice';
 
 export function EntryRoomForm() {
-  const user = useUser();
   const [email, setEmail] = useState('');
   const [room, setRoom] = useState('room1');
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -16,10 +17,12 @@ export function EntryRoomForm() {
       room: room,
       email: email,
     });
-    user.setUserData({
-      email: email,
-      room: room,
-    });
+    dispatch(
+      updateUser({
+        email: email,
+        room: room,
+      })
+    );
     navigate('room');
     return;
   };
