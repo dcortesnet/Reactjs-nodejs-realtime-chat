@@ -1,4 +1,4 @@
-# Nodejs Typescript
+# React Nodejs Realtime chat - Backend ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
 ## Installation
 
