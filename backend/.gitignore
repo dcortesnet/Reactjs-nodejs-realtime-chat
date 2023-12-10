@@ -20,3 +20,4 @@ yarn-error.log*
 # Dependiendo de tu sistema operativo, puedes agregar configuraciones específicas aquí
 .DS_Store
 Thumbs.db
+package-lock.json
